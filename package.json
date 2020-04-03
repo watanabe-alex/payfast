@@ -1,0 +1,7 @@
+{
+  "name": "payfast",
+  "version": "1.0.0",
+  "description": "um gateway para pagamentos através de recursos http.",
+  "main": "index.js",
+  "license": "MIT"
+}
