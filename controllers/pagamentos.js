@@ -7,8 +7,19 @@ module.exports = (app) => {
 
     app.post('/pagamentos/pagamento', (req, res) => {
         var pagamento = req.body;
-        console.log(pagamento);
-        res.send('OK.');
+        console.log('Processando uma requisição de um novo pagamento');
+        
+        pagamento.status = 'CRIADO';
+        pagamento.data = new Date;
+
+        var connection = app.persistencia.connectionFactory();
+        var pagamentoDao = new app.persistencia.PagamentoDao();
+        
+        pagamentoDao.salva(pagamento, (erro, resultado) => {
+            console.log('pagamento criado');
+        });
+
+        res.send(pagamento);
     });
 
 }
